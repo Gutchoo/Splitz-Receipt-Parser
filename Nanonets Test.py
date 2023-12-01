@@ -3,7 +3,7 @@ import requests
 
 url = 'https://app.nanonets.com/api/v2/OCR/Model/08fe2528-e1e6-49c9-aff1-7aae3d13cba5/LabelFile/?async=false'
 
-data = {'file': open('/Users/charlesgutcho/Desktop/Nanonets/Receipt Photos copy/IMG_1789.JPG', 'rb')}
+data = {'file': open('file_path', 'rb')}
 
 response = requests.post(url, auth=requests.auth.HTTPBasicAuth('API KEY', ''), files=data)
 
