@@ -3,9 +3,9 @@ import requests
 
 url = 'https://app.nanonets.com/api/v2/OCR/Model/08fe2528-e1e6-49c9-aff1-7aae3d13cba5/LabelFile/?async=false'
 
-data = {'file': open('Receipt Photos copy/IMG_1789.JPG', 'rb')}
+data = {'file': open('/Users/charlesgutcho/Desktop/Nanonets/Receipt Photos copy/IMG_1789.JPG', 'rb')}
 
-response = requests.post(url, auth=requests.auth.HTTPBasicAuth('input API key', ''), files=data)
+response = requests.post(url, auth=requests.auth.HTTPBasicAuth('API KEY', ''), files=data)
 
 # print(response.text)
 
@@ -48,7 +48,11 @@ for prediction in predictions:
 # Convert item details to a list of structured dictionaries
 item_list = []
 for item in item_details.values():
-    item_list.append({'Name': item['Description'], 'Price': item['Line_Amount']})
+    item_list.append({
+        'Name': item['Description'], 
+        'Price': item['Line_Amount'],
+        'Quantity': item['Quantity']
+    })
 
 # Final Output Dictionary
 final_output = {
@@ -60,8 +64,4 @@ final_output = {
 }
 
 
-final_output['Merchant Name']
-final_output['Total Amount']
-final_output['Tax Amount']
-final_output['Date']
-
+# print(final_output)
